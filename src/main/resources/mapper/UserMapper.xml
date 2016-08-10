@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rainbow.mapper.UserMapper" >
+<mapper namespace="com.rainbow.mapper.UserMapper">
+    <update id="updatePwd" parameterType="java.lang.String">
 
+
+    </update>
+
+    <insert id="save" parameterType="com.rainbow.entity.User">
+        INSERT INTO user(username,password,remark)
+        VALUES (#{username},#{password},#{remark})
+    </insert>
+
+    <select id="queryUserByName" parameterType="java.lang.String" resultType="com.rainbow.entity.User">
+
+        SELECT username
+        FROM  USER
+        where username=#{username}
+    </select>
 
 </mapper>

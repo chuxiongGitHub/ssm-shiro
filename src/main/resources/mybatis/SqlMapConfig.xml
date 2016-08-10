@@ -16,5 +16,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	</settings>
 	<!--批量别名配置-->
+	<typeAliases>
+		<package name="com.rainbow.entity"/>
+	</typeAliases>
 
 </configuration>
