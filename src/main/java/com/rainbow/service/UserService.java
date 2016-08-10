@@ -12,5 +12,5 @@ public interface UserService {
     boolean updatePwd(String id,String pwd,String newPwd);
 
     //新增用户
-    void save(User user) throws BusinessException;
+    void save(User user);
 }
