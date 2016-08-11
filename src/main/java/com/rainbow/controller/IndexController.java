@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 一事专注，便是动人；一生坚守，便是深邃！
  */
 @Controller
-@RequestMapping(value = "/test")
 public class IndexController {
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(){
-        return "index";
+        return "shiro/first";
     }
 }

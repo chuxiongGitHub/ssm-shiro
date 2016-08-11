@@ -25,8 +25,8 @@
           <td><input type="text" class="form-control" name="username"></td>
       </tr>
       <tr>
-          <td>密码<span class="glyphicon glyphicon-phone-alt"></span></td>
-          <td><input type="text" class="form-control" name="username"></td>
+          <td>密码<span class="glyphicon glyphicon-lock"></span></td>
+          <td><input type="password" class="form-control" name="password"></td>
       </tr>
       <tr>
           <td>描述</td>

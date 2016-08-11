@@ -16,21 +16,22 @@ public class GlobalInteceptor implements HandlerInterceptor {
     private static Logger logger = LoggerFactory.getLogger(GlobalInteceptor.class);
 
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-        System.out.println("进入全局拦截器，放行所有请求");
+
+        logger.info("进入全局拦截器，放行所有请求");
         return true;
     }
 
     public void postHandle(HttpServletRequest httpServletRequest,
                            HttpServletResponse httpServletResponse, Object o,
                            ModelAndView modelAndView) throws Exception {
-        System.out.println("进入全局拦截器，处理所有controller请求");
+        logger.info("进入全局拦截器，处理所有controller请求");
         httpServletRequest.setCharacterEncoding("UTF-8");
 
     }
 
     public void afterCompletion(HttpServletRequest httpServletRequest,
                                 HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        System.out.println("全局拦截器的后续请求，清除缓存");
+        logger.info("全局拦截器的后续请求，清除缓存");
 
     }
 }

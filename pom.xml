@@ -263,9 +263,9 @@
     </dependency>
 <!--spring通用mapper集成包-->
     <dependency>
-      <groupId>com.github.abel533</groupId>
+      <groupId>tk.mybatis</groupId>
       <artifactId>mapper</artifactId>
-      <version>2.3.4</version>
+      <version>3.3.8</version>
     </dependency>
     <dependency>
       <groupId>com.github.pagehelper</groupId>
@@ -278,7 +278,34 @@
       <artifactId>commons-lang</artifactId>
       <version>2.6</version>
     </dependency>
-    
+<!--sql解析工具-->
+    <dependency>
+      <groupId>com.github.jsqlparser</groupId>
+      <artifactId>jsqlparser</artifactId>
+      <version>0.9.5</version>
+    </dependency>
+
+    <!--引入shiro依赖-->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>1.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>1.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>1.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>2.6.11</version>
+    </dependency>
   </dependencies>
   <build>
     <resources>

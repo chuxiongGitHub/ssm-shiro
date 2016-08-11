@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 /**
  * Created by rainbow on 2016/8/10.
@@ -27,13 +30,27 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    public void save(User user) {
+
+    public List<User> getUserList() {
+        List<User> list = userMapper.getUserList();
+        return list;
+    }
+
+    public void save(User user) throws BusinessException {
         logger.info("调用插入数据的方法");
-        User getUser=userMapper.queryUserByName(user.getUsername());
-        if (getUser!=null){
-            logger.error("用户名已经存在");
+        try {
+            User getUser = userMapper.queryUserByName(user.getUsername());
+            if (getUser != null) {
+                logger.error("用户名已经存在:{}", user.getUsername());
+                throw new BusinessException("插入用户失败，用户名已经存在");
+            } else {
+                userMapper.save(user);
+                logger.info("插入的数据是：{}", user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        userMapper.save(user);
-        logger.info("插入的数据是：{}",user);
+
+
     }
 }

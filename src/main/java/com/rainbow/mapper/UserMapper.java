@@ -3,6 +3,8 @@ package com.rainbow.mapper;
 
 import com.rainbow.entity.User;
 
+import java.util.List;
+
 /**
  * Created by rainbow on 2016/8/9.
  * 一事专注，便是动人；一生坚守，便是深邃！
@@ -17,5 +19,8 @@ public interface UserMapper{
 
     //根据用户名查询用户
     User queryUserByName(String username);
+
+    //查询用户
+    List<User> getUserList();
 
 }
