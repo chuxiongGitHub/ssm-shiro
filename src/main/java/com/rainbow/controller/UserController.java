@@ -12,6 +12,7 @@ import org.springframework.context.Lifecycle;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,6 +51,11 @@ public class UserController {
         return "index";
     }
 
+    @RequestMapping(value = "/first")
+    public String first() {
+        return "shiro/first";
+    }
+
     @RequestMapping(value = "/getUserList")
     public String getUserList(Model model) {
         List<User> list = userService.getUserList();
@@ -65,22 +71,20 @@ public class UserController {
 
 
     //用户登录
-    public String login(String userCode, String password, HttpSession session) throws BusinessException {
+    @RequestMapping(value = "/login")
+    public String login(String randomCode, String userCode, String password, HttpSession session) throws BusinessException {
 
-//        //校验验证码
-//        //从session中获取正确的验证码
-//        String validateCode = (String) session.getAttribute("validateCode");
-//
-//        //输入的验证和session中进行校验
-//        if (!randomCode.equals(validateCode)) {
-//            throw new BusinessException("验证码输入错误");
-//        }
+        //校验验证码
+        //从session中获取正确的验证码
+        String validateCode = (String) session.getAttribute("validateCode");
+
+        //输入的验证和session中进行校验
+        if (!randomCode.equals(validateCode)) {
+            throw new BusinessException("验证码输入错误");
+        }
         ActiveUser activeUser = sysService.authenticat(userCode, password);
-
         session.setAttribute("activeUser", activeUser);
-
-
-        return null;
+        return "redirct:user/first";
 
     }
 
@@ -90,6 +94,6 @@ public class UserController {
         //session失效
         session.invalidate();
 
-        return "rediret:/loginForm";
+        return "rediret:user/loginForm";
     }
 }

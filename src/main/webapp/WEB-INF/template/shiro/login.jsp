@@ -11,7 +11,7 @@
 <LINK rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/jquery-easyui/style.css">
 <LINK rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/jquery-easyui/login/login.css">
 <LINK rel="stylesheet" type="text/css"	href="<%=request.getContextPath()%>/res/jquery-easyui/themes/default/easyui.css">
-<LINK rel="stylesheet" type="text/css"	href="<%=request.getContextPath()%>/res/jquery-easyui/themes/icon.css">
+<LINK rel="stylesheet" type="text/css"	href="<%=request.getContextPath()%>/res/bootstrap/css/bootstrap.css"><LINK rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/res/jquery-easyui/style.css">
 
 <STYLE type="text/css">
 .btnalink {
@@ -31,23 +31,14 @@
 </STYLE>
 <%@ include file="../common/common_js.jsp"%>
 
-<script type="text/javascript">
 
-	//登录提示方法
-	function loginsubmit() {
-		$("#loginform").submit();
-
-	}
-	
-</SCRIPT>
 </HEAD>
 <BODY style="background: #f6fdff url(<%=request.getContextPath()%>/res/images/login/bg1.jpg) repeat-x;">
-	<FORM id="loginform" name="loginform" action="${baseurl}login.action"
-		method="post">
+	<form   action="<%=request.getContextPath()%>/user/login" method="post">
 		<DIV class="logincon">
 
 			<DIV class="title">
-				<IMG alt="" src="<%=request.getContextPath()%>/res/images/login/logo.png">
+				<IMG alt="" src="<%=request.getContextPath()%>/res/images/login/xg.png">
 			</DIV>
 
 			<DIV class="cen_con">
@@ -60,26 +51,26 @@
 				<TABLE class="tab" border="0" cellSpacing="6" cellPadding="8">
 					<TBODY>
 						<TR>
-							<TD>用户名：</TD>
-							<TD colSpan="2"><input type="text" id="usercode"
-								name="usercode" style="WIDTH: 130px" /></TD>
+							<TD><span class="glyphicon glyphicon-user"></span>用户名：</TD>
+							<TD colSpan="2"><input type="text" id="userCode"
+								name="userCode" style="WIDTH: 130px;height: 20px" /></TD>
 						</TR>
 						<TR>
-							<TD>密 码：</TD>
-							<TD><input type="password" id="pwd" name="password" style="WIDTH: 130px" />
+							<TD><span class="glyphicon glyphicon-lock"></span>密 码：</TD>
+							<TD><input type="password" id="pwd" name="password" style="WIDTH: 130px;height: 20px" />
 							</TD>
 						</TR>
 						<TR>
-							<TD>验证码：</TD>
+							<TD><span class="glyphicon glyphicon-cloud"></span>验证码：</TD>
 							<TD><input id="randomcode" name="randomcode" size="8" /> <img
-								id="randomcode_img" src="${baseurl}validatecode.jsp" alt=""
-								width="56" height="20" align='absMiddle' /> <a
+									id="randomcode_img" src="<%=request.getContextPath()%>/validatecode.jsp" alt=""
+									width="56" height="20" align='absMiddle' /> <a
 								href=javascript:randomcode_refresh()>刷新</a></TD>
 						</TR>
 
 						<TR>
-							<TD colSpan="2" align="center"><input type="button"
-								class="btnalink" onclick="loginsubmit()" value="登&nbsp;&nbsp;录" />
+							<TD colSpan="2" align="center"><input type="submit"
+								class="btnalink"  value="登&nbsp;&nbsp;录" />
 								<input type="reset" class="btnalink" value="重&nbsp;&nbsp;置" /></TD>
 						</TR>
 					</TBODY>
@@ -87,6 +78,6 @@
 
 			</DIV>
 		</DIV>
-	</FORM>
+	</form>
 </BODY>
 </HTML>
