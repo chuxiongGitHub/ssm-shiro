@@ -69,31 +69,13 @@ public class UserController {
         return "shiro/login";
     }
 
-
-    //用户登录
-    @RequestMapping(value = "/login")
-    public String login(String randomCode, String userCode, String password, HttpSession session) throws BusinessException {
-
-        //校验验证码
-        //从session中获取正确的验证码
-        String validateCode = (String) session.getAttribute("validateCode");
-
-        //输入的验证和session中进行校验
-        if (!randomCode.equals(validateCode)) {
-            throw new BusinessException("验证码输入错误");
-        }
-        ActiveUser activeUser = sysService.authenticat(userCode, password);
-        session.setAttribute("activeUser", activeUser);
-        return "redirct:user/first";
-
-    }
-
     //用户退出
+    @RequestMapping(value = "/logout")
     public String logout(HttpSession session) throws BusinessException {
 
         //session失效
         session.invalidate();
 
-        return "rediret:user/loginForm";
+        return "redirect:user/loginForm.action";
     }
 }

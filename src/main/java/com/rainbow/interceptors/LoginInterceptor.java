@@ -17,12 +17,9 @@ import java.util.List;
 public class LoginInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-
         //得到请求的URL地址
         String url = httpServletRequest.getRequestURI();
-
         //从配置文件中获取公开的URL地址
-
         List<String> open_lists = ResourcesUtil.gekeyList("anonymousURL");
         //去遍历公开地址:是公开地址，则放行
         for (String open_list : open_lists) {

@@ -24,36 +24,36 @@ public class SysServiceImpl implements SysService {
     @Autowired
     private SysUserMapper sysUserMapper;
 
-    public ActiveUser authenticat(String userCode, String password) throws BusinessException {
+    public ActiveUser authenticat(String usercode, String password) throws BusinessException {
         //根据用户账号查找用户
-        SysUser sysUser = this.findSysUserByUserCode(userCode);
+        SysUser sysUser = this.findSysUserByUserCode(usercode);
         if (sysUser == null) {
             //账号不存在
-            logger.error("不存在账号：{}", userCode);
+            logger.error("不存在账号：{}", usercode);
             throw new BusinessException("用户账号不存在");
         }
         String db_password = sysUser.getPassword();
         //对比密码
         //对页面输入的密码进行加密
-        String password_input_md5 = new MD5().getMD5ofStr(password);
-        if (!password_input_md5.equalsIgnoreCase(db_password)) {
+        //String password_input_md5 = new MD5().getMD5ofStr(password);
+        if (!password.equals(db_password)) {
             throw new BusinessException("用户民或者密码错误");
         }
         //认证通过,返回用户身份信息
         ActiveUser activeUser = new ActiveUser();
 
         activeUser.setUserId(sysUser.getId());
-        activeUser.setUserCode(userCode);
+        activeUser.setUserCode(usercode);
         activeUser.setUsername(sysUser.getUsername());
 
         return activeUser;
     }
 
     //根据用户账号查询用户信息
-    public SysUser findSysUserByUserCode(String userCode) throws BusinessException {
+    public SysUser findSysUserByUserCode(String usercode) throws BusinessException {
         SysUserExample sysUserExample = new SysUserExample();
         SysUserExample.Criteria criteria = sysUserExample.createCriteria();
-        criteria.andUsercodeEqualTo(userCode);
+        criteria.andUsercodeEqualTo(usercode);
 
         List<SysUser> list = sysUserMapper.selectByExample(sysUserExample);
 

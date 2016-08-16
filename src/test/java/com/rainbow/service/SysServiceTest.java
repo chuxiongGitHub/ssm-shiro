@@ -39,6 +39,8 @@ public class SysServiceTest {
             System.out.println("用户名不存在");
         }
 
+    }
+    public void testAuthenticat()throws Exception{
 
     }
 }
