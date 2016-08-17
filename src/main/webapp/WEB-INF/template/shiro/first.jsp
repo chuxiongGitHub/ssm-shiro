@@ -131,7 +131,7 @@
         <li><div>
                 <a title="创建采购单" ref="1_1" href="#"
                     rel="<%=baseUrl%> /user/getUserList"><span
-                    class="glyphicon glyphicon-folder-close">&nbsp;</span><span ><a href=javascript:addTab('创建采购单','${baseurl}/user/getUserList')>创建采购菜单</a></span></a>
+                    class="glyphicon glyphicon-folder-close">&nbsp;</span><span ><a href=javascript:addTab('创建采购单','${baseurl}/user/getUserList.action')>创建采购菜单</a></span></a>
             </div></li>
         <li><div>
                 <a title="提交采购单" ref="1_1" href="#"

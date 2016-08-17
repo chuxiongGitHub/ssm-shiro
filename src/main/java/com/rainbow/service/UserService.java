@@ -17,4 +17,6 @@ public interface UserService {
     void save(User user) throws BusinessException;
 
     List<User> getUserList();
+
+    public User getUserById(Long userId);
 }

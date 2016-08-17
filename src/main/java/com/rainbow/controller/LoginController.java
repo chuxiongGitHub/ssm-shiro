@@ -40,7 +40,7 @@ public class LoginController {
         ActiveUser activeUser = sysService.authenticat(usercode, password);
         session.setAttribute("activeUser", activeUser);
 
-        return "redirect:user/first.action";
+        return "redirect:/user/first";
 
 
     }

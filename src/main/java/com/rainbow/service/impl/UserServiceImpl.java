@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService {
         return list;
     }
 
+    public User getUserById(Long userId) {
+        User user = userMapper.getUserById(userId);
+        return user;
+    }
+
     public void save(User user) throws BusinessException {
         logger.info("调用插入数据的方法");
         try {

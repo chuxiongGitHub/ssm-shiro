@@ -23,4 +23,8 @@
         FROM
         user
     </select>
+
+    <select id="getUserById" parameterType="java.lang.Long" resultType="user">
+        select * from user where user_id=#{userId}
+    </select>
 </mapper>

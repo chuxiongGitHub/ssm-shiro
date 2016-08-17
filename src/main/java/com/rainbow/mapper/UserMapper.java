@@ -9,10 +9,10 @@ import java.util.List;
  * Created by rainbow on 2016/8/9.
  * 一事专注，便是动人；一生坚守，便是深邃！
  */
-public interface UserMapper{
+public interface UserMapper {
 
     //更改密码
-    boolean updatePwd(String id,String pwd,String newPwd);
+    boolean updatePwd(String id, String pwd, String newPwd);
 
     //用户注册
     int save(User user);
@@ -22,5 +22,8 @@ public interface UserMapper{
 
     //查询用户
     List<User> getUserList();
+
+    //根据id查询用户
+    User getUserById(Long userId);
 
 }
