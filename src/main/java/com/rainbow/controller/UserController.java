@@ -1,5 +1,6 @@
 package com.rainbow.controller;
 
+import com.rainbow.common.Encrypt;
 import com.rainbow.dto.BaseResult;
 import com.rainbow.entity.ActiveUser;
 import com.rainbow.entity.User;
@@ -9,6 +10,7 @@ import com.rainbow.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.parsing.ParseState;
 import org.springframework.context.Lifecycle;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,8 +46,10 @@ public class UserController {
 
     //用户注册
     @RequestMapping(value = "/register")
-    public String register(User user, Model model, HttpServletRequest request) throws BusinessException {
+    public String register(Model model, HttpServletRequest request) throws BusinessException {
         try {
+            User user=new User();
+            //user.setPassword(Encrypt.encode(user.getPassword(),Encrypt.ENCODE_TYPE_PASSWORD));
             userService.save(user);
             request.setAttribute("username", user.getUsername());
         } catch (Exception e) {
@@ -80,6 +85,20 @@ public class UserController {
         session.invalidate();
 
         return "redirect:user/loginForm";
+    }
+
+    public ModelAndView test(){
+
+        List<User> user=userService.getUserList();
+
+        ModelAndView modelAndView=new ModelAndView();
+
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("test");
+
+        return modelAndView;
+
+
     }
 
 }

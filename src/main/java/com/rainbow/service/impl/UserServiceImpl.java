@@ -41,6 +41,22 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    public User getUserByName(String username) {
+        //根据用户名查找用户信息
+        User user=null;
+        try {
+            User getUser=userMapper.queryUserByName(username);
+            if (getUser!=null){
+                logger.error("用户名已经存在：{}",username);
+            }
+            user=getUser;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
     public void save(User user) throws BusinessException {
         logger.info("调用插入数据的方法");
         try {

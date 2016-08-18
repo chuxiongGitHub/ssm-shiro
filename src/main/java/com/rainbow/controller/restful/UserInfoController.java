@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -52,7 +49,9 @@ public class UserInfoController {
         BaseResult<User> result;
         try {
             User user = userService.getUserById(userId);
-
+            if (user==null){
+                result=new BaseResult<User>(false,"用户信息不存在");
+            }else
             result = new BaseResult<User>(true, user);
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -61,4 +60,15 @@ public class UserInfoController {
         return result;
     }
 
+
+    //获取body中的请求参数
+    @RequestMapping(value = "/getJson",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public User getJson(@RequestBody User user){
+
+        logger.info("获取到的数据是：{}",user.getUsername());
+
+        return user;
+
+    }
 }

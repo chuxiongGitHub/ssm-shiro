@@ -19,4 +19,6 @@ public interface UserService {
     List<User> getUserList();
 
     public User getUserById(Long userId);
+
+    public User getUserByName(String username);
 }
