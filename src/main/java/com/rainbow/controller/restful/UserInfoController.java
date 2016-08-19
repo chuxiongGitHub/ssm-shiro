@@ -57,6 +57,7 @@ public class UserInfoController {
             logger.error(e.getMessage());
             result = new BaseResult<User>(false, e.getMessage());
         }
+
         return result;
     }
 
