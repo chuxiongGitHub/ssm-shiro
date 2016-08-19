@@ -26,9 +26,7 @@ public class UserMapperTest {
 
     @Test
     public void testSave() throws Exception {
-
         User user = new User();
-
         user.setUsername("dd");
         user.setPassword("dd");
         user.setRemark("fsaf");
