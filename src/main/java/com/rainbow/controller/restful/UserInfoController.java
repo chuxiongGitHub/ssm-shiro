@@ -2,6 +2,7 @@ package com.rainbow.controller.restful;
 
 import com.rainbow.controller.UserController;
 import com.rainbow.dto.BaseResult;
+import com.rainbow.dto.UserResult;
 import com.rainbow.entity.User;
 import com.rainbow.exception.BusinessException;
 import com.rainbow.service.UserService;
@@ -43,19 +44,19 @@ public class UserInfoController {
 
     @RequestMapping(value = "/getUser/{userId}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public BaseResult<User> getUserById(@PathVariable("userId") Long userId) {
+    public BaseResult<UserResult> getUserById(@PathVariable("userId") Long userId) {
 
 
-        BaseResult<User> result;
+        BaseResult<UserResult> result;
         try {
-            User user = userService.getUserById(userId);
-            if (user==null){
-                result=new BaseResult<User>(false,"用户信息不存在");
-            }else
-            result = new BaseResult<User>(true, user);
+            UserResult user = userService.getUserById(userId);
+            if (user == null) {
+                result = new BaseResult<UserResult>(false, "用户信息不存在");
+            } else
+                result = new BaseResult<UserResult>(true, user);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            result = new BaseResult<User>(false, e.getMessage());
+            result = new BaseResult<UserResult>(false, e.getMessage());
         }
 
         return result;
@@ -63,13 +64,29 @@ public class UserInfoController {
 
 
     //获取body中的请求参数
-    @RequestMapping(value = "/getJson",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value = "/getJson", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public User getJson(@RequestBody User user){
+    public User getJson(@RequestBody User user) {
 
-        logger.info("获取到的数据是：{}",user.getUsername());
+        logger.info("获取到的数据是：{}", user.getUsername());
 
         return user;
 
+    }
+
+    @RequestMapping(value = "/rainbow/{userId}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public BaseResult<UserResult> rainbow(@PathVariable long userId) {
+
+        BaseResult<UserResult> result;
+
+        try {
+            UserResult user = userService.getUserById(userId);
+            result = new BaseResult<UserResult>(true, user);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = new BaseResult<UserResult>(false, e.getMessage());
+        }
+        return result;
     }
 }

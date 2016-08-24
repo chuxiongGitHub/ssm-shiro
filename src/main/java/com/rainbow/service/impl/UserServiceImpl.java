@@ -1,5 +1,6 @@
 package com.rainbow.service.impl;
 
+import com.rainbow.dto.UserResult;
 import com.rainbow.entity.User;
 import com.rainbow.exception.BusinessException;
 import com.rainbow.mapper.UserMapper;
@@ -36,20 +37,20 @@ public class UserServiceImpl implements UserService {
         return list;
     }
 
-    public User getUserById(Long userId) {
-        User user = userMapper.getUserById(userId);
+    public UserResult getUserById(Long userId) {
+        UserResult user = userMapper.getUserById(userId);
         return user;
     }
 
     public User getUserByName(String username) {
         //根据用户名查找用户信息
-        User user=null;
+        User user = null;
         try {
-            User getUser=userMapper.queryUserByName(username);
-            if (getUser!=null){
-                logger.error("用户名已经存在：{}",username);
+            User getUser = userMapper.queryUserByName(username);
+            if (getUser != null) {
+                logger.error("用户名已经存在：{}", username);
             }
-            user=getUser;
+            user = getUser;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,6 +61,7 @@ public class UserServiceImpl implements UserService {
     public void save(User user) throws BusinessException {
         logger.info("调用插入数据的方法");
         try {
+            // user.setPassword(Encrypt.encode(password, Encrypt.ENCODE_TYPE_PASSWORD));
             User getUser = userMapper.queryUserByName(user.getUsername());
             if (getUser != null) {
                 logger.error("用户名已经存在:{}", user.getUsername());

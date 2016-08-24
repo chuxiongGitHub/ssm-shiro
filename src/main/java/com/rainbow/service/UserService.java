@@ -1,5 +1,6 @@
 package com.rainbow.service;
 
+import com.rainbow.dto.UserResult;
 import com.rainbow.entity.User;
 import com.rainbow.exception.BusinessException;
 
@@ -18,7 +19,8 @@ public interface UserService {
 
     List<User> getUserList();
 
-    public User getUserById(Long userId);
 
     public User getUserByName(String username);
+
+    public UserResult getUserById(Long userId);
 }

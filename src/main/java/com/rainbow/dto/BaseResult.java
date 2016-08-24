@@ -30,12 +30,6 @@ public class BaseResult<T> {
         this.error = error;
     }
 
-    public BaseResult(boolean success, T data, String error) {
-        this.success = success;
-        this.data = data;
-        this.error = error;
-    }
-
     public boolean isSuccess() {
         return success;
     }

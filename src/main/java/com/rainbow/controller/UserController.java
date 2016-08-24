@@ -53,10 +53,10 @@ public class UserController {
             userService.save(user);
             request.setAttribute("username", user.getUsername());
         } catch (Exception e) {
-            return "error";
+           e.printStackTrace();
 
         }
-        return "index";
+        return "redirect:/user/getUserList";
     }
 
     @RequestMapping(value = "/first")
@@ -84,7 +84,7 @@ public class UserController {
         //session失效
         session.invalidate();
 
-        return "redirect:user/loginForm";
+        return "redirect:/user/loginForm";
     }
 
     public ModelAndView test(){

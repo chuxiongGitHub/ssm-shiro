@@ -37,7 +37,7 @@
 
 </HEAD>
 <BODY style="background: #f6fdff url(<%=request.getContextPath()%>/res/images/login/bg1.jpg) repeat-x;">
-<form  action="<%=request.getContextPath()%>/form/login.action" method="post">
+<form  action="<%=request.getContextPath()%>/form/login" method="post">
     <DIV class="logincon">
 
         <DIV class="title">

@@ -67,7 +67,7 @@
         function logout() {
             _confirm('您确定要退出本系统吗?',null,
                     function(){
-                        location.href = '<%=baseUrl%>/user/logout.action';
+                        location.href = '<%=baseUrl%>/user/logout';
                     }
             )
         }
@@ -131,7 +131,7 @@
         <li><div>
                 <a title="创建采购单" ref="1_1" href="#"
                     rel="<%=baseUrl%> /user/getUserList"><span
-                    class="glyphicon glyphicon-folder-close">&nbsp;</span><span ><a href=javascript:addTab('创建采购单','${baseurl}/user/getUserList.action')>创建采购菜单</a></span></a>
+                    class="glyphicon glyphicon-folder-close">&nbsp;</span><span ><a href=javascript:addTab('创建采购单','${baseurl}/user/getUserList')>创建采购菜单</a></span></a>
             </div></li>
         <li><div>
                 <a title="提交采购单" ref="1_1" href="#"
@@ -148,6 +148,16 @@
                     rel="/purchasing/order/orderList.action?type=3" icon="icon-log"><span
                     class="glyphicon glyphicon-user">&nbsp;</span><span >总经理审核</span></a>
             </div></li>
+             <li>
+                 <div>
+                     <a title="新增用户" ref="1_1" href="#" rel="'${baseurl}/user/userForm" icon="icon-log">
+                         <span class="glyphicon glyphicon-plus">&nbsp;</span>
+                          <span>
+                         <a href=javascript:addTab('创建采购单','${baseurl}/user/userForm')>新增用户</a>
+                        </span>
+                     </a>
+                 </div>
+             </li>
     </ul>
     </DIV>
 </DIV>
