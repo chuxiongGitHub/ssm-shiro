@@ -150,10 +150,10 @@
             </div></li>
              <li>
                  <div>
-                     <a title="新增用户" ref="1_1" href="#" rel="'${baseurl}/user/userForm" icon="icon-log">
+                     <a title="新增用户" ref="1_1" href="#" rel="${baseurl}/user/userForm" icon="icon-log">
                          <span class="glyphicon glyphicon-plus">&nbsp;</span>
                           <span>
-                         <a href=javascript:addTab('创建采购单','${baseurl}/user/userForm')>新增用户</a>
+                         <a href=javascript:addTab('新增用户','${baseurl}/user/userForm')>新增用户</a>
                         </span>
                      </a>
                  </div>

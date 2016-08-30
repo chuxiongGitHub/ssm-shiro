@@ -27,8 +27,8 @@ public class UserMapperTest {
     @Test
     public void testSave() throws Exception {
         User user = new User();
-        user.setUsername("dd");
-        user.setPassword("dd");
+        user.setUsername("昆明");
+        user.setPassword("解决");
         user.setRemark("fsaf");
         userMapper.save(user);
     }
@@ -48,6 +48,16 @@ public class UserMapperTest {
         }
         logger.info("恭喜用户名可用");
 
+
+    }
+
+    @Test
+    public void testUpdate() throws Exception {
+        User user=new User();
+        user.setUserId(17);
+        user.setUsername("大理");
+        user.setRemark("丽江美丽");
+        userMapper.updateUser(user);
 
     }
 }

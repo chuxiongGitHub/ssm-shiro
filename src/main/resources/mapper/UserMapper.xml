@@ -27,4 +27,15 @@
     <select id="getUserById" parameterType="java.lang.Long" resultType="com.rainbow.dto.UserResult">
         select user_id,username from user where user_id=#{userId}
     </select>
+
+    <delete id="delById">
+        DELETE from USER
+        where user_id=#{userId}
+    </delete>
+
+    <update id="updateUser" parameterType="com.rainbow.entity.User">
+        update user set username=#{username},password=#{password},remark=#{remark}
+        where user_id=#{userId}
+    </update>
+
 </mapper>

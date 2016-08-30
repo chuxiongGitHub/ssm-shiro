@@ -46,14 +46,13 @@ public class UserController {
 
     //用户注册
     @RequestMapping(value = "/register")
-    public String register(Model model, HttpServletRequest request) throws BusinessException {
+    public String register(HttpServletRequest request, User user) throws BusinessException {
         try {
-            User user=new User();
             //user.setPassword(Encrypt.encode(user.getPassword(),Encrypt.ENCODE_TYPE_PASSWORD));
             userService.save(user);
             request.setAttribute("username", user.getUsername());
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
 
         }
         return "redirect:/user/getUserList";
@@ -87,18 +86,33 @@ public class UserController {
         return "redirect:/user/loginForm";
     }
 
-    public ModelAndView test(){
+    public ModelAndView test() {
 
-        List<User> user=userService.getUserList();
+        List<User> user = userService.getUserList();
 
-        ModelAndView modelAndView=new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.addObject("user",user);
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("test");
 
         return modelAndView;
 
 
+    }
+
+    //根据id删除用户
+    @RequestMapping(value = "/delUser/{id}")
+    public String delUser(@PathVariable Long id) {
+        userService.delById(id);
+
+        return "redirect:/user/getUserList";
+    }
+
+    //修改用户信息
+    public String updateUser(User user) {
+        Long userId = user.getUserId();
+
+        return "redirect:/user/getUserList";
     }
 
 }

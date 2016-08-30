@@ -27,4 +27,9 @@ public interface UserMapper {
     //根据id查询用户
     UserResult getUserById(Long userId);
 
+    //删除用户
+    void delById(Long id);
+
+    int updateUser(User user);
+
 }

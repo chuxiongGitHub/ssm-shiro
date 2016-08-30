@@ -58,6 +58,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    public void delById(Long id) {
+        userMapper.delById(id);
+    }
+
     public void save(User user) throws BusinessException {
         logger.info("调用插入数据的方法");
         try {
